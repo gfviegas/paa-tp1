@@ -7,9 +7,24 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "intSet.h"
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printf("Hello, World!\n");
+    srand((unsigned)time(NULL));
+    //variaveis
+    int vetor[TAMVETOR];
+    int x;
+    preencheVetor(&vetor[0], TAMVETOR);
+    //qsort(&vetor[0], TAMVETOR, sizeof(int), comparador);
+    bsort(&vetor[0], TAMVETOR);
+    printf("Vetor ordenado de tamanho %d\n", TAMVETOR);
+    imprimeVetor(&vetor[0], TAMVETOR);
+    printf("Digite o x\n\n");
+    scanf("%d", &x);
+    
     return 0;
 }
