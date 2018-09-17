@@ -12,23 +12,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define N 10
+#include <time.h>
 
+#define MAXRANDOM 15
+#define TAMVETOR 50
+
+int comparador(const void * a, const void * b);
+void preencheVetor(int *vetor, int N);
+void imprimeVetor(int *vetor, int n);
+void bsort(int *vetor, int n);
+int buscaBinaria(int *vetor, int esq, int dir, int x);
+int procuraX(int *vetor, int x);
+
+// HASHING
 int hashCode(int valor);
 void initHash(int* hashTable);
 void insertHash(int* hashTable, int valor);
-void imprimeHash(int* hashTable);
 int verificarHash(int* hashTable, int* vetor, int X);
 
-int comparador(const void * a, const void * b);
-
-void preencheVetor(int *vetor, int N);
-
-void imprimeVetor(int *vetor, int n);
-
-void bsort(int *vetor, int n);
-
-int buscaBinaria(int *vetor, int esq, int dir, int x);
-
-int procuraX(int *vetor, int x);
 #endif /* intSet_h */
