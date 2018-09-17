@@ -40,21 +40,29 @@ void bsort(int *vetor, int n){
     }
 }
 
-int procuraX(int *vetor, int x){
-    int i;
-    return x;
+void procuraX(int *vetor, int x){
+    int i, indice;
+    for(i=0;i<TAMVETOR;i++){
+        indice = buscaBinaria(vetor, i+1, TAMVETOR-1, (x-vetor[i]));
+
+        if (indice > 0) {
+            printf("Soma encontrada, %d no indice %d com %d no indice %d", vetor[indice], indice, vetor[i], i);
+            return;
+        }
+    }
 }
 
-int buscaBinaria(int *vetor, int esq, int dir, int x){
+int buscaBinaria(int *vetor, int esq, int dir, int elemento){
     int i = (esq + dir) / 2;
-    if(vetor[i] == x)
+    if(vetor[i] == elemento)
         return i;
     if(esq>=dir)
         return -1;
-    if(vetor[i] < x)
-        return buscaBinaria(vetor, i, dir, x);
     else
-        return buscaBinaria(vetor,esq, i, x);
+        if (vetor[i] < elemento)
+            return buscaBinaria(vetor, i+1, dir, elemento);
+        else
+        return buscaBinaria(vetor,esq, i-1, elemento);
 }
 
 
@@ -65,7 +73,7 @@ int hashCode(int valor) {
 void initHash(int* hashTable) {
     int i;
     for (i = 0; i < TAMVETOR; i++) {
-        hashTable[i] = INT8_MIN;
+        hashTable[i] = INT_MIN;
     }
 }
 void insertHash(int* hashTable, int valor) {
@@ -73,19 +81,19 @@ void insertHash(int* hashTable, int valor) {
 }
 int verificarHash(int* hashTable, int* vetor, int X) {
     int i, valorAtual, valorBuscado;
-    
+
     for (i = 0; i < TAMVETOR; i++) {
         valorAtual = vetor[i];
         valorBuscado = hashTable[hashCode(X - valorAtual)];
 
-        if (valorBuscado != INT8_MIN && (valorBuscado + valorAtual) == X) {
+        if (valorBuscado != INT_MIN && (valorBuscado + valorAtual) == X) {
             printf("Par %d e %d dá o valor %d \n", valorBuscado, valorAtual, X);
             return 1;
         }
         
         insertHash(hashTable, valorAtual);
     }
-    
+
     printf("Não foi encontrado nenhum par \n");
     return 0;
 }

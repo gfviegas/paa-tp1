@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <limits.h>
 
 #define MAXRANDOM 15000
 #define TAMVETOR 50000
@@ -22,7 +23,7 @@ void preencheVetor(int *vetor, int N);
 void imprimeVetor(int *vetor, int n);
 void bsort(int *vetor, int n);
 int buscaBinaria(int *vetor, int esq, int dir, int x);
-int procuraX(int *vetor, int x);
+void procuraX(int *vetor, int x);
 
 // HASHING
 int hashCode(int valor);
