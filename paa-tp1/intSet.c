@@ -77,12 +77,13 @@ int verificarHash(int* hashTable, int* vetor, int X) {
     for (i = 0; i < TAMVETOR; i++) {
         valorAtual = vetor[i];
         valorBuscado = hashTable[hashCode(X - valorAtual)];
-        insertHash(hashTable, valorAtual);
-        
+
         if (valorBuscado != INT8_MIN && (valorBuscado + valorAtual) == X) {
             printf("Par %d e %d dá o valor %d \n", valorBuscado, valorAtual, X);
             return 1;
         }
+        
+        insertHash(hashTable, valorAtual);
     }
     
     printf("Não foi encontrado nenhum par \n");
