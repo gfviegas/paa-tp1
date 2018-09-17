@@ -20,17 +20,10 @@ void preencheVetor(int *vetor, int n){
     return;
 }
 
-void imprimeVetor(int *vetor, int n){
-    int i;
-    for(i=0;i<n;i++)
-        printf("%d ",vetor[i]);
-    printf("\n\n");
-}
-
-void bsort(int *vetor, int n){
+void bsort(int *vetor){
     int i, j, troca;
-    for(i=0;i<n;i++){
-        for(j=i;j<n;j++){
+    for(i=0;i<TAMVETOR;i++){
+        for(j=i;j<TAMVETOR;j++){
             if(vetor[i] > vetor[j]){
                 troca = vetor[i];
                 vetor[i] = vetor[j];
@@ -45,10 +38,7 @@ void procuraX(int *vetor, int x){
     for(i=0;i<TAMVETOR;i++){
         indice = buscaBinaria(vetor, i+1, TAMVETOR-1, (x-vetor[i]));
 
-        if (indice > 0) {
-            printf("Soma encontrada, %d no indice %d com %d no indice %d", vetor[indice], indice, vetor[i], i);
-            return;
-        }
+        if (indice > 0) return;
     }
 }
 
@@ -89,7 +79,5 @@ int verificarHash(int* hashTable, int* vetor, int X) {
         if (valorBuscado != INT_MIN && (valorBuscado + valorAtual) == X) return 1;
         insertHash(hashTable, valorAtual);
     }
-
-    printf("Não foi encontrado nenhum par \n");
     return 0;
 }
