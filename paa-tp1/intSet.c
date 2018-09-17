@@ -86,11 +86,7 @@ int verificarHash(int* hashTable, int* vetor, int X) {
         valorAtual = vetor[i];
         valorBuscado = hashTable[hashCode(X - valorAtual)];
 
-        if (valorBuscado != INT_MIN && (valorBuscado + valorAtual) == X) {
-            printf("Par %d e %d dá o valor %d \n", valorBuscado, valorAtual, X);
-            return 1;
-        }
-        
+        if (valorBuscado != INT_MIN && (valorBuscado + valorAtual) == X) return 1;
         insertHash(hashTable, valorAtual);
     }
 

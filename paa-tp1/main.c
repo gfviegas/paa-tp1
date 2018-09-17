@@ -11,23 +11,49 @@
 #include <time.h>
 #include "intSet.h"
 
+#define QTD_VARIAS_EXECUCOES 200
+
+void testaHash(int* vetor, int* hashTable, int x) {
+    int i;
+    double totalMilisegundos = 0;
+    initHash(hashTable);
+    
+    for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
+        clock_t begin = clock();
+        verificarHash(hashTable, vetor, x);
+        clock_t end = clock();
+        totalMilisegundos += (double)(end - begin) / (CLOCKS_PER_SEC / 1000);
+    }
+    
+    printf("Tempo médio gasto com HASH: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
+}
+
+void ordenaQuick(int* vetor) {
+    double totalMilisegundos = 0;
+    clock_t begin = clock();
+    qsort(vetor, TAMVETOR, sizeof(int), comparador);
+    clock_t end = clock();
+    printf("Tempo gasto para ordenar com quick: %lf ms\n", totalMilisegundos);
+}
+
+void testaComQuick(int* vetor, int x) {
+    ordenaQuick(vetor);
+}
+
+//    bsort(&vetor[0], TAMVETOR);
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     srand((unsigned)time(NULL));
-    //variaveis
     int vetor[TAMVETOR];
-    int x;
+    int hashTable[TAMVETOR];
+    int x = 90;
+    
     preencheVetor(&vetor[0], TAMVETOR);
-    //qsort(&vetor[0], TAMVETOR, sizeof(int), comparador);
-    bsort(&vetor[0], TAMVETOR);
-    printf("Vetor ordenado de tamanho %d\n", TAMVETOR);
-    imprimeVetor(&vetor[0], TAMVETOR);
-    printf("Digite o x\n\n");
-    scanf("%d", &x);
-    printf("\n\n\n============================ TESTANDO A PESQUISA BINARIA===========\n\n\n %d encontrado no indice %d\n\n\n\n", x, buscaBinaria(&vetor[0], 0, TAMVETOR-1, x));
-    printf("o x digitado foi %d\n\n", x);
-    procuraX(&vetor[0], x);
-
+    testaHash(vetor, hashTable, x);
+    testaComQuick(vetor, x);
+    
+    //    procuraX(&vetor[0], x);
+    
+    
     return 0;
 }
