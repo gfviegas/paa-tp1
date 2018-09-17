@@ -9,7 +9,7 @@
 #include "intSet.h"
 
 int comparador(const void * a, const void * b) {
-   return ( *(int*)a - *(int*)b );
+    return ( *(int*)a - *(int*)b );
 }
 
 void preencheVetor(int *vetor, int n){
@@ -50,7 +50,6 @@ void procuraX(int *vetor, int x){
             return;
         }
     }
-
 }
 
 int buscaBinaria(int *vetor, int esq, int dir, int elemento){
@@ -64,4 +63,36 @@ int buscaBinaria(int *vetor, int esq, int dir, int elemento){
             return buscaBinaria(vetor, i+1, dir, elemento);
         else
         return buscaBinaria(vetor,esq, i-1, elemento);
+}
+
+
+// HASHING
+int hashCode(int valor) {
+    return abs(valor % TAMVETOR);
+}
+void initHash(int* hashTable) {
+    int i;
+    for (i = 0; i < TAMVETOR; i++) {
+        hashTable[i] = INT_MIN;
+    }
+}
+void insertHash(int* hashTable, int valor) {
+    hashTable[hashCode(valor)] = valor;
+}
+int verificarHash(int* hashTable, int* vetor, int X) {
+    int i, valorAtual, valorBuscado;
+
+    for (i = 0; i < TAMVETOR; i++) {
+        valorAtual = vetor[i];
+        valorBuscado = hashTable[hashCode(X - valorAtual)];
+        insertHash(hashTable, valorAtual);
+
+        if (valorBuscado != INT_MIN && (valorBuscado + valorAtual) == X) {
+            printf("Par %d e %d dá o valor %d \n", valorBuscado, valorAtual, X);
+            return 1;
+        }
+    }
+
+    printf("Não foi encontrado nenhum par \n");
+    return 0;
 }

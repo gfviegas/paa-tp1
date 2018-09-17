@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC65AE532150282F005F50ED /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EC65AE522150282F005F50ED /* main.c */; };
+		EC65AE5E21503A86005F50ED /* intSet.c in Sources */ = {isa = PBXBuildFile; fileRef = EC65AE5C21503A86005F50ED /* intSet.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		EC65AE4F2150282F005F50ED /* paa-tp1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "paa-tp1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC65AE522150282F005F50ED /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		EC65AE5C21503A86005F50ED /* intSet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = intSet.c; sourceTree = "<group>"; };
+		EC65AE5D21503A86005F50ED /* intSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = intSet.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 		EC65AE512150282F005F50ED /* paa-tp1 */ = {
 			isa = PBXGroup;
 			children = (
+				EC65AE5C21503A86005F50ED /* intSet.c */,
+				EC65AE5D21503A86005F50ED /* intSet.h */,
 				EC65AE522150282F005F50ED /* main.c */,
 			);
 			path = "paa-tp1";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC65AE5E21503A86005F50ED /* intSet.c in Sources */,
 				EC65AE532150282F005F50ED /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
