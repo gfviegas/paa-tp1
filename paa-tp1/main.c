@@ -25,6 +25,9 @@ int main(int argc, const char * argv[]) {
     imprimeVetor(&vetor[0], TAMVETOR);
     printf("Digite o x\n\n");
     scanf("%d", &x);
-    
+    printf("\n\n\n============================ TESTANDO A PESQUISA BINARIA===========\n\n\n %d encontrado no indice %d\n\n\n\n", x, buscaBinaria(&vetor[0], 0, TAMVETOR-1, x));
+    printf("o x digitado foi %d\n\n", x);
+    procuraX(&vetor[0], x);
+
     return 0;
 }

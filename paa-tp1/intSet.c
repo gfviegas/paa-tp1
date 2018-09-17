@@ -40,19 +40,28 @@ void bsort(int *vetor, int n){
     }
 }
 
-int procuraX(int *vetor, int x){
-    int i;
+void procuraX(int *vetor, int x){
+    int i, indice;
+    for(i=0;i<TAMVETOR;i++){
+        indice = buscaBinaria(vetor, i+1, TAMVETOR-1, (x-vetor[i]));
+
+        if (indice > 0) {
+            printf("Soma encontrada, %d no indice %d com %d no indice %d", vetor[indice], indice, vetor[i], i);
+            return;
+        }
+    }
 
 }
 
-int buscaBinaria(int *vetor, int esq, int dir, int x){
+int buscaBinaria(int *vetor, int esq, int dir, int elemento){
     int i = (esq + dir) / 2;
-    if(vetor[i] == x)
+    if(vetor[i] == elemento)
         return i;
     if(esq>=dir)
         return -1;
-    if(vetor[i] < x)
-        return buscaBinaria(vetor, i, dir, x);
     else
-        return buscaBinaria(vetor,esq, i, x);
+        if (vetor[i] < elemento)
+            return buscaBinaria(vetor, i+1, dir, elemento);
+        else
+        return buscaBinaria(vetor,esq, i-1, elemento);
 }
