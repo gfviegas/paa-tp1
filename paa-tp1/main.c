@@ -12,11 +12,15 @@
 #include "intSet.h"
 
 #define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
-#define QTD_VARIAS_EXECUCOES 1
+#define QTD_VARIAS_EXECUCOES 20
 
-void testaHash(int* vetor, int* hashTable, int x) {
+void testaHash(int x) {
     int i;
     double totalMilisegundos = 0;
+    int vetor[TAMVETOR];
+    int hashTable[TAMVETOR];
+    
+    preencheVetor(vetor, TAMVETOR);
     initHash(hashTable);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
@@ -38,9 +42,12 @@ void ordenaQuick(int* vetor) {
     printf("Tempo gasto para ordenar com quick: %lf ms\n", totalMilisegundos);
 }
 
-void testaComQuick(int* vetor, int x) {
+void testaComQuick(int x) {
     double totalMilisegundos = 0;
     int i;
+    int vetor[TAMVETOR];
+    
+    preencheVetor(vetor, TAMVETOR);
     ordenaQuick(vetor);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
@@ -58,12 +65,15 @@ void ordenaBubble(int* vetor) {
     bsort(vetor);
     clock_t end = clock();
     totalMilisegundos = (double)(end - begin) / CLOCKS_PER_MS;
-    printf("Tempo gasto para ordenar com bubble: %lf ms\n", totalMilisegundos);
+    printf("Tempo gasto para ordenar com bubble: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
 }
 
-void testaComBubble(int* vetor, int x) {
+void testaComBubble(int x) {
     double totalMilisegundos = 0;
     int i;
+    int vetor[TAMVETOR];
+    
+    preencheVetor(vetor, TAMVETOR);
     ordenaBubble(vetor);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
@@ -79,14 +89,11 @@ void testaComBubble(int* vetor, int x) {
 
 int main(int argc, const char * argv[]) {
     srand((unsigned)time(NULL));
-    int vetor[TAMVETOR];
-    int hashTable[TAMVETOR];
-    int x = 900;
+    int x = geraAleatorio();
     
-    preencheVetor(vetor, TAMVETOR);
-    testaHash(vetor, hashTable, x);
-    testaComQuick(vetor, x);
-    testaComBubble(vetor, x);
+    testaHash(x);
+    testaComQuick(x);
+    testaComBubble(x);
     
     return 0;
 }

@@ -8,15 +8,20 @@
 
 #include "intSet.h"
 
+int geraAleatorio(void) {
+    return (rand() % MAXRANDOM) + 1; //Exclui o caso 0
+}
+
 int comparador(const void * a, const void * b) {
     return ( *(int*)a - *(int*)b );
 }
 
 void preencheVetor(int *vetor, int n){
     int i;
-    for(i=0;i<n;i++){
-        vetor[i] = (rand() % MAXRANDOM) + 1; //Exclui o caso 0
+    for (i = 0; i < n; i++) {
+        vetor[i] = geraAleatorio();
     }
+
     return;
 }
 

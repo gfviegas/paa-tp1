@@ -15,9 +15,10 @@
 #include <time.h>
 #include <limits.h>
 
-#define MAXRANDOM 150000
-#define TAMVETOR 100000
+#define MAXRANDOM 15000
+#define TAMVETOR 50000
 
+int geraAleatorio(void);
 int comparador(const void * a, const void * b);
 void preencheVetor(int *vetor, int N);
 void bsort(int *vetor);
