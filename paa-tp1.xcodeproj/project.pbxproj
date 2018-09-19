@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EC1B8EA0215289FE00C3B624 /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1B8E9F215289FE00C3B624 /* random.c */; };
 		EC1B8EA321528C0100C3B624 /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1B8EA221528C0100C3B624 /* hash.c */; };
+		EC1B8EA62152F80D00C3B624 /* benchmark.c in Sources */ = {isa = PBXBuildFile; fileRef = EC1B8EA52152F80D00C3B624 /* benchmark.c */; };
 		EC65AE532150282F005F50ED /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EC65AE522150282F005F50ED /* main.c */; };
 		EC65AE5E21503A86005F50ED /* intSet.c in Sources */ = {isa = PBXBuildFile; fileRef = EC65AE5C21503A86005F50ED /* intSet.c */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,8 @@
 		EC1B8E9F215289FE00C3B624 /* random.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
 		EC1B8EA121528C0100C3B624 /* hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
 		EC1B8EA221528C0100C3B624 /* hash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hash.c; sourceTree = "<group>"; };
+		EC1B8EA42152F80D00C3B624 /* benchmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = benchmark.h; sourceTree = "<group>"; };
+		EC1B8EA52152F80D00C3B624 /* benchmark.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = benchmark.c; sourceTree = "<group>"; };
 		EC65AE4F2150282F005F50ED /* paa-tp1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "paa-tp1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC65AE522150282F005F50ED /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		EC65AE5C21503A86005F50ED /* intSet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = intSet.c; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 				EC1B8E9F215289FE00C3B624 /* random.c */,
 				EC1B8EA121528C0100C3B624 /* hash.h */,
 				EC1B8EA221528C0100C3B624 /* hash.c */,
+				EC1B8EA42152F80D00C3B624 /* benchmark.h */,
+				EC1B8EA52152F80D00C3B624 /* benchmark.c */,
 			);
 			path = "paa-tp1";
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				EC1B8EA0215289FE00C3B624 /* random.c in Sources */,
 				EC65AE532150282F005F50ED /* main.c in Sources */,
 				EC1B8EA321528C0100C3B624 /* hash.c in Sources */,
+				EC1B8EA62152F80D00C3B624 /* benchmark.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
