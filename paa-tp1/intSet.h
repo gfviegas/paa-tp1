@@ -16,7 +16,7 @@
 /**
  * Tamanho do array a ser manipulado
  */
-#define ARRAY_SIZE 50
+#define ARRAY_SIZE 5000
 
 // Algoritmos de inicialização
 /**

@@ -8,14 +8,7 @@
 
 #include "benchmark.h"
 
-#include "intSet.h"
-#include "hash.h"
-#include "random.h"
-
-#define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
-#define CLOCKS_PER_US (CLOCKS_PER_MS / 1000)
-#define TESTS_AMMOUNT 200
-
+// Executa uma bateria de {TESTS_AMMOUNT} testes, com vetores e valores de x aleatórios, utilizando a solução de tabela hash e calculando o valor médio de microsegundos gastos para encontrar dois elementos cuja soma seja um x aleátorio
 void hashSolutionBenchmark(void) {
     int i, x;
     double searchTime = 0;
@@ -39,6 +32,7 @@ void hashSolutionBenchmark(void) {
     printf("******* FIM HASH *******\n");
 }
 
+// Executa uma bateria de {TESTS_AMMOUNT} testes, com vetores e valores de x aleatórios, utilizando a solução de ordenar o vetor com QuickSort e calculando o valor médio de milisegundos gastos para encontrar dois elementos cuja soma seja um x aleátorio com busca binária e para ordenar o vetor
 void quickSortSolutionBenchmark(void) {
     double sortTime = 0;
     double searchTime = 0;
@@ -69,12 +63,13 @@ void quickSortSolutionBenchmark(void) {
     printf("******* FIM QUICKSORT *******\n");
 }
 
+// Executa uma bateria de {TESTS_AMMOUNT / 4} testes, com vetores e valores de x aleatórios, utilizando a solução de ordenar o vetor com BubbleSort e calculando o valor médio de milisegundos gastos para encontrar dois elementos cuja soma seja um x aleátorio com busca binária e para ordenar o vetor
 void bubbleSortSolutionBenchmark(void) {
     double sortTime = 0;
     double searchTime = 0;
     int i, x;
     int array[ARRAY_SIZE];
-    int bubbleQuantidade = TESTS_AMMOUNT / 100;
+    int bubbleQuantidade = TESTS_AMMOUNT / 4;
     
     for (i = 0; i < bubbleQuantidade; i++) {
         x = generateRandomNumberOnMax();
