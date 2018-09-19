@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "intSet.h"
+#include "hash.h"
+#include "random.h"
 
 #define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
 #define QTD_VARIAS_EXECUCOES 20
@@ -17,15 +19,15 @@
 void testaHash(int x) {
     int i;
     double totalMilisegundos = 0;
-    int vetor[TAMVETOR];
-    int hashTable[TAMVETOR];
+    int array[ARRAY_SIZE];
+    int hashTable[ARRAY_SIZE];
     
-    preencheVetor(vetor, TAMVETOR);
-    initHash(hashTable);
+    fillArrayWithRandomNumbers(array);
+    initHashTable(hashTable);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
         clock_t begin = clock();
-        verificarHash(hashTable, vetor, x);
+        searchElementWithHash(hashTable, array, x);
         clock_t end = clock();
         totalMilisegundos += (double)(end - begin) / CLOCKS_PER_MS;
     }
@@ -33,10 +35,10 @@ void testaHash(int x) {
     printf("Tempo médio gasto com HASH: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
 }
 
-void ordenaQuick(int* vetor) {
+void ordenaQuick(int* array) {
     double totalMilisegundos = 0;
     clock_t begin = clock();
-    qsort(vetor, TAMVETOR, sizeof(int), comparador);
+    qsort(array, ARRAY_SIZE, sizeof(int), quickSortComparator);
     clock_t end = clock();
     totalMilisegundos = (double)(end - begin) / CLOCKS_PER_MS;
     printf("Tempo gasto para ordenar com quick: %lf ms\n", totalMilisegundos);
@@ -45,24 +47,24 @@ void ordenaQuick(int* vetor) {
 void testaComQuick(int x) {
     double totalMilisegundos = 0;
     int i;
-    int vetor[TAMVETOR];
+    int array[ARRAY_SIZE];
     
-    preencheVetor(vetor, TAMVETOR);
-    ordenaQuick(vetor);
+    fillArrayWithRandomNumbers(array);
+    ordenaQuick(array);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
         clock_t begin = clock();
-        procuraX(vetor, x);
+        searchElementWithBinarySearch(array, x);
         clock_t end = clock();
         totalMilisegundos += (double)(end - begin) / CLOCKS_PER_MS;
     }
     printf("Tempo medio gasto para buscar apos ordenar com quick: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
 }
 
-void ordenaBubble(int* vetor) {
+void ordenaBubble(int* array) {
     double totalMilisegundos = 0;
     clock_t begin = clock();
-    bsort(vetor);
+    bubbleSort(array);
     clock_t end = clock();
     totalMilisegundos = (double)(end - begin) / CLOCKS_PER_MS;
     printf("Tempo gasto para ordenar com bubble: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
@@ -71,25 +73,25 @@ void ordenaBubble(int* vetor) {
 void testaComBubble(int x) {
     double totalMilisegundos = 0;
     int i;
-    int vetor[TAMVETOR];
+    int array[ARRAY_SIZE];
     
-    preencheVetor(vetor, TAMVETOR);
-    ordenaBubble(vetor);
+    fillArrayWithRandomNumbers(array);
+    ordenaBubble(array);
     
     for (i = 0; i < QTD_VARIAS_EXECUCOES; i++) {
         clock_t begin = clock();
-        procuraX(vetor, x);
+        searchElementWithBinarySearch(array, x);
         clock_t end = clock();
         totalMilisegundos += (double)(end - begin) / CLOCKS_PER_MS;
     }
     printf("Tempo medio gasto para buscar apos ordenar com bubble: %lf ms\n", totalMilisegundos / QTD_VARIAS_EXECUCOES);
 }
 
-//    bsort(&vetor[0], TAMVETOR);
+//    bubbleSort(&array[0], ARRAY_SIZE);
 
 int main(int argc, const char * argv[]) {
     srand((unsigned)time(NULL));
-    int x = geraAleatorio();
+    int x = generateRandomNumberOnMax();
     
     testaHash(x);
     testaComQuick(x);

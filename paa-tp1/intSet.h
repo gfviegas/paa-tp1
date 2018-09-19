@@ -11,24 +11,58 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <time.h>
-#include <limits.h>
+#include "random.h"
 
-#define MAXRANDOM 15000
-#define TAMVETOR 50000
+/**
+ * Tamanho do array a ser manipulado
+ */
+#define ARRAY_SIZE 50000
 
-int geraAleatorio(void);
-int comparador(const void * a, const void * b);
-void preencheVetor(int *vetor, int N);
-void bsort(int *vetor);
-int buscaBinaria(int *vetor, int esq, int dir, int x);
-void procuraX(int *vetor, int x);
+// Algoritmos de inicialização
+/**
+ Preenche um vetor fornecido com números aleatórios
 
-// HASHING
-int hashCode(int valor);
-void initHash(int* hashTable);
-void insertHash(int* hashTable, int valor);
-int verificarHash(int* hashTable, int* vetor, int X);
+ @param array Vetor a ser manipulado
+ */
+void fillArrayWithRandomNumbers(int *array);
+
+
+// Algoritmos de ordenação
+/**
+ Método a ser utilizado como comparador pelo QuickSort
+
+ @param a Primeiro elemento de comparação
+ @param b Segundo elemento de comparação
+ @return Valor booleano que determina se a é menor que b, para ord. cresc.
+ */
+int quickSortComparator(const void * a, const void * b);
+
+/**
+ Ordena um vetor utilizando o BubbleSort
+
+ @param array Vetor a ser ordenado
+ */
+void bubbleSort(int *array);
+
+// Algoritmos de Busca Binária
+/**
+ Realiza a busca binária de um elemento X em um vetor ordenado
+
+ @param array Vetor a ser manipulado
+ @param left Limite inferior do vetor
+ @param right Limite superior do vetor
+ @param x Valor a ser buscado
+ @return Valor representando se encontrou (indice) ou não (-1) o elemento
+ */
+int binarySearch(int *array, int left, int right, int x);
+
+/**
+ Realiza a verificação, com busca binária, se existe dois elementos cuja soma seja x
+
+ @param array Vetor ordenado a ser manipulado
+ @param x Valor cuja soma de dois elementos deseja ser encontrada
+ */
+void searchElementWithBinarySearch(int *array, int x);
+
 
 #endif /* intSet_h */
